@@ -82,6 +82,4 @@ foreach my $ship (values(%{$data->{ships}})) {
     );
 
     remove_tree($imgdir);
-
-    system(q{open}, $file);
 }
