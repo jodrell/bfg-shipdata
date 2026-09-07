@@ -1,0 +1,64 @@
+html,body,*,p,ol,ul,li,table,tr,td,th {
+  font-family: "Times New Roman",Times,serif;
+}
+main {
+  max-width: 40em;
+  margin: auto;
+}
+header {
+  display: flex;
+  flex-direction: column;
+}
+header :nth-child(1) {
+  order: 2;
+}
+header :nth-child(2) {
+  order: 3;
+}
+header :nth-child(3) {
+  order: 1;
+}
+header h2 {
+  text-align: right;
+  font-size: 1rem;
+}
+header h3 {
+  font-size: 1rem;
+}
+h1,h2,h3 {
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,th {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+th,#ship-name {
+  font-weight: bold;
+  color: Field;
+  background-color: FieldText;
+}
+th,td {
+  text-align: center;
+  border: 1px solid FieldText;
+  padding:0.125em;
+}
+table {
+  width: 100%;
+  border: 1px solid FieldText;
+  border-collapse: collapse;
+}
+#special,#options {
+  border: 1px solid FieldText;
+  border-top: none;
+  padding: 0.5em;
+  display: flex;
+}
+#special h3, #options h3 {
+  margin: 0;
+  padding-right: 1em;
+  font-size: 1rem;
+}
+#special-rules, #optional {
+}
