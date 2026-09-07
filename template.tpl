@@ -14,7 +14,10 @@
     <h3 id="fleet-name">{{ ship.fl }}</h3>
   </header>
 
-  <figure id="ship-image"></figure>
+  <figure id="ship-image">
+    <img src="{{ image }}">
+    <figcaption></figcaption>
+  </figure>
 
   <table id="ship-info">
     <thead><tr>
