@@ -57,14 +57,14 @@
     </tbody>
   </table>
 
-  {% if ship.sr != "" %}
+  {% if has_sr %}
     <section id="special">
       <h3>Special</h2>
       <div id="special-rules">{{ ship.sr }}</div>
     </section>
   {% endif %}
 
-  {% if ship.op != "" %}
+  {% if has_op %}
     <section id="options">
       <h3>Options</h2>
       <div id="optional">{{ ship.op }}</div>
