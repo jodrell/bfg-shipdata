@@ -180,13 +180,17 @@ sub write_file {
 
 =head1 OPTIONS
 
+You must specify one of --help, --ships, --images, --extract-to.
+
 =over
 
-=item * --help - show help
+=item * --help - show help.
 
-=item * --ships - generate ship profiles in the current directory
+=item * --ships - generate ship profiles in the current directory.
 
-=item * --images - generate ship images in the current directory
+=item * --images - generate ship images in the current directory.
+
+=item * --extract-to=DIR - extract images from the Fleets book into C<DIR> for later use.
 
 =item * --image-SRC=DIR - use the images in C<DIR> instead of extracting them from the Fleets book.
 
