@@ -123,9 +123,9 @@ sub generate_page {
     }
 
     foreach (qw(sr op)) {
-        $ship->{$_} =~ s/•/\n•/g;
+        $ship->{$_} =~ s/•/\n* /g;
         $ship->{$_} =~ s/^\n//g;
-        $ship->{$_} =~ s/\n/<br>\n/g;
+        $ship->{$_} = bullets2li($ship->{$_});
     }
 
     write_file(
@@ -137,6 +137,46 @@ sub generate_page {
             has_op  => length($ship->{op}) > 0,
         )
     );
+}
+
+sub bullets2li {
+    my @lines = split(/\n/, shift);
+
+    for (my $i = 0 ; $i < scalar(@lines) ; $i++) {
+        my $is_first_line = (0 == $i);
+        my $is_last_line = (1+$i == scalar(@lines));
+
+        if ($lines[$i] =~ /^\*/) {
+            # line is part of a bulleted list
+            $lines[$i] =~ s/^\*\s*//g;
+
+            if ($is_first_line) {
+                $lines[$i] = sprintf(q{<ul><li>%s</li>}, $lines[$i]);
+
+            } else {
+                $lines[$i] = sprintf(q{<li>%s</li>}, $lines[$i]);
+
+                if ($lines[$i-1] !~ /\/li>$/) {
+                    # previous line is not part of a list, start a new one
+                    $lines[$i] = sprintf(q{<ul>%s}, $lines[$i]);
+                }
+            }
+
+            $lines[$i] .= q{</ul>} if ($is_last_line);
+
+        } else {
+            # line is not part of a bulleted list
+
+            $lines[$i] = sprintf(q{<p>%s</p>}, $lines[$i]);
+
+            if ($lines[$i-1] =~ /\/li>$/) {
+                # previous line is part of a list, close it
+                $lines[$i] = sprintf(q{</ul>%s}, $lines[$i]);
+            }
+        }
+    }
+
+    return join("\n", @lines);
 }
 
 #

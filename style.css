@@ -73,12 +73,13 @@ table {
   display: flex;
 }
 
+#special ul, #options ul {
+  margin: 0;
+  padding-left:2em;
+}
+
 #special h3, #options h3 {
   margin: 0;
   padding-right: 1em;
   font-size: 1rem;
 }
-
-#special-rules, #optional {
-}
-
