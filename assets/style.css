@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'MachineItcDEE';
-    src: url('MachineItcDEE.woff') format('woff'),
-         url('MachineItcDEE.ttf') format('truetype');
+    src: url('MachineItcDEE.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -127,7 +126,7 @@ h1,h2,h3 {
 h1,h2,h3,th {
   text-transform: uppercase;
   font-weight: bold;
-  font-family: MachineItcDEE;
+  font-family: MachineItcDEE, "Arial Black" "Arial", "Helvetica", sans;
 }
 
 #ship-image img {
