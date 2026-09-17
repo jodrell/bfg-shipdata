@@ -5,10 +5,7 @@
   <meta name="color-scheme" content="dark light">
   <title>{{ ship.nm }} ({{ ship.fl }})</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <main>
@@ -18,10 +15,14 @@
     <h3 id="fleet-name">{{ ship.fl }}</h3>
   </header>
 
-  <figure id="ship-image">
-    <img src="{{ image }}">
-    <figcaption></figcaption>
-  </figure>
+    <figure id="ship-image">
+      {% if has_image %}
+        <img src="{{ image }}">
+      {% else %}
+        <div style="text-align:center"><em>No image available</em></div>
+      {% endif %}
+      <figcaption></figcaption>
+    </figure>
 
   <table id="ship-info">
     <thead><tr>

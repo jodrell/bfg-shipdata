@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'MachineItcDEE';
+    src: url('MachineItcDEE.woff') format('woff'),
+         url('MachineItcDEE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+  font-family: 'Minion Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Regular'), url('MinionPro-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Italic'), url('MinionPro-It.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Medium'), url('MinionPro-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Medium Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Medium Italic'), url('MinionPro-MediumIt.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Semibold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Semibold'), url('MinionPro-Semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Semibold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Semibold Italic'), url('MinionPro-SemiboldIt.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Bold Condensed';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Bold Condensed'), url('MinionPro-BoldCn.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Bold'), url('MinionPro-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Bold Condensed Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Bold Condensed Italic'), url('MinionPro-BoldCnIt.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Minion Pro Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Minion Pro Bold Italic'), url('MinionPro-BoldIt.woff') format('woff');
+}
+
+@media (print) {
+  html {
+    background-image: url(bg-print.jpg);
+    background-size: cover;
+  }
+}
+
+html,body,*,p,ol,ul,li,table,tr,td,th {
+  font-family: "Minion Pro Regular", "Times New Roman",Times,serif;
+}
+
+main {
+  max-width: 45em;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+header :nth-child(1) {
+  order: 2;
+}
+
+header :nth-child(2) {
+  order: 3;
+}
+
+header :nth-child(3) {
+  order: 1;
+}
+
+header h2 {
+  text-align: right;
+  font-size: 1rem;
+}
+
+header h3 {
+  font-size: 1rem;
+}
+
+h1,h2,h3 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,th {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: MachineItcDEE;
+}
+
+#ship-image img {
+  display:block;
+  margin: auto;
+  max-width:67%;
+}
+
+th,#ship-name {
+  font-weight: bold;
+  color: Field;
+  background-color: FieldText;
+}
+
+th,td {
+  text-align: center;
+  border: 1px solid FieldText;
+  padding:0.125em;
+}
+
+table {
+  width: 100%;
+  border: 1px solid FieldText;
+  border-collapse: collapse;
+}
+
+#special,#options {
+  border: 1px solid FieldText;
+  border-top: none;
+  padding: 0.5em;
+  display: flex;
+}
+
+#special ul, #options ul {
+  margin: 0;
+  padding-left:2em;
+}
+
+#special h3, #options h3 {
+  margin: 0;
+  padding-right: 1em;
+  font-size: 1rem;
+}
+
+nav ul {
+  padding: 0;
+  text-align:center;
+}
+
+nav ul li {
+  display:inline-block;
+  list-style-type: none;
+  padding: 0 0.5em 0 0;
+}

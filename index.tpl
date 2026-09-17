@@ -5,10 +5,7 @@
   <meta name="color-scheme" content="dark light">
   <title>Battlefleet Gothic Ship Profiles</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <main>
@@ -22,9 +19,19 @@
       <a href="https://bfgtools.kuldare.com/">Gothic Fleet Registry</a>.</p>
   </aside>
 
+  <nav><ul>
+    <li>Jump to:</li>
+    {% for fleet in fleets %}
+      <li>
+        <a href="#{{ fleet.slug }}">{{ fleet.name }}</a>
+      </li>
+    {% endfor %}
+  </ul></nav>
+
   {% for fleet in fleets %}
     <article>
 
+      <a name="{{ fleet.slug }}"></a>
       <h2>{{ fleet.name }}</h2>
 
       {% if fleet.counts.Battleship > 0 %}

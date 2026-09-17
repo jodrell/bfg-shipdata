@@ -4,7 +4,7 @@
 use Cwd qw(getcwd abs_path);
 use Data::Mirror qw(mirror_str);
 use File::Basename qw(dirname basename);
-use File::Copy;
+use File::Copy::Recursive qw(rcopy);
 use File::Glob qw(:bsd_glob);
 use File::Path qw(make_path remove_tree);
 use File::Spec;
@@ -44,6 +44,7 @@ printf(STDERR qq{files will be written to '%s'\n}, $dir);
 
 munge_data();
 generate_pages();
+copy_assets();
 
 say STDERR q{done!};
 
@@ -53,7 +54,7 @@ exit;
 # apply some cleanups to the data from the Gothic Fleet Registry. 
 #
 sub munge_data {
-    foreach my $ship (sort { $a->{pg} <=> $b->{pg} } values(%{$data->{ships}})) {
+    foreach my $ship (values(%{$data->{ships}})) {
         $ship->{fl} = munge_fleet_name($ship->{fl});
     }
 }
@@ -70,11 +71,18 @@ sub generate_pages {
     }
 
     generate_index();
+}
 
-    copy(
-        File::Spec->catfile(dirname(abs_path(__FILE__)), q{style.css}),
-        File::Spec->catfile($dir, q{style.css}),
+#
+# copy assets into the output directory
+#
+sub copy_assets {
+    my $dst = File::Spec->catfile($dir, q{assets});
+    rcopy(
+        File::Spec->catfile(dirname(abs_path(__FILE__)), q{assets}),
+        $dst,
     );
+    printf(STDERR qq{wrote assets to %s/\n}, $dst);
 }
 
 #
@@ -122,6 +130,8 @@ sub generate_page {
         $ship->{$_} = $tc->title($ship->{$_});
     }
 
+    $ship->{nm} = q{Q-Ship} if (q{Q-SHIP} eq $ship->{nm});
+
     foreach (qw(sr op)) {
         $ship->{$_} =~ s/•/\n* /g;
         $ship->{$_} =~ s/^\n//g;
@@ -131,14 +141,19 @@ sub generate_page {
     write_file(
         filename($dir, $ship, q{html}),
         $tpl->render(
-            ship    => $ship,
-            image   => basename(filename($dir, $ship, q{png})),
-            has_sr  => length($ship->{sr}) > 0,
-            has_op  => length($ship->{op}) > 0,
+            ship        => $ship,
+            has_image   => (-e filename($dir, $ship, q{png})),
+            image       => basename(filename($dir, $ship, q{png})),
+            has_sr      => length($ship->{sr}) > 0,
+            has_op      => length($ship->{op}) > 0,
         )
     );
 }
 
+#
+# takes a blob of text, which may contain bulleted lists, and turns it into
+# HTML.
+#
 sub bullets2li {
     my @lines = split(/\n/, shift);
 
@@ -188,6 +203,7 @@ sub generate_index {
         if (!exists($fleets->{$ship->{fl}})) {
             $fleets->{$ship->{fl}} = {
                 name    => $tc->title($ship->{fl}),
+                slug    => get_slug($ship->{fl}),
                 ships   => {
                     Defence     => [],
                     Escort      => [],
@@ -204,6 +220,9 @@ sub generate_index {
         });
     }
 
+    #
+    # this is the order in which the fleets will be listed
+    #
     my %order = (
         q{Imperial Navy}        => 1,
         q{Space Marines}        => 2,
@@ -225,10 +244,10 @@ sub generate_index {
         q{Additional Vessels}   => 18,
     );
 
-    foreach my $fleet (keys(%{$fleets})) {
+    foreach my $fleet (sort { $order{$fleets->{$a}->{name}} <=> $order{$fleets->{$b}->{name}} } keys(%{$fleets})) {
         foreach my $type (keys(%{$fleets->{$fleet}->{ships}})) {
             $fleets->{$fleet}->{counts}->{$type}    = scalar(@{$fleets->{$fleet}->{ships}->{$type}});
-            $fleets->{$fleet}->{ships}->{$type}     = [ sort { $a->{name} <=> $b->{name} } @{$fleets->{$fleet}->{ships}->{$type}} ];
+            $fleets->{$fleet}->{ships}->{$type}     = [ sort { $a->{name} cmp $b->{name} } @{$fleets->{$fleet}->{ships}->{$type}} ];
         }
     }
 
@@ -287,11 +306,17 @@ sub write_file {
 sub filename {
     my ($parent_dir, $ship, $type) = @_;
 
-    my $slug = lc(sprintf(q{%s/%s}, $ship->{fl}, $ship->{nm}));
-    $slug =~ s/ /-/g;
-    $slug =~ s/[^a-z0-9\-\.\/]//g;
+    return File::Spec->catfile($parent_dir, get_slug($ship->{fl}), sprintf(q{%s.%s}, get_slug($ship->{nm}), $type));
+}
 
-    return File::Spec->catfile($parent_dir, sprintf(q{%s.%s}, $slug, $type));
+sub get_slug {
+    my $slug = lc(shift);
+
+    $slug =~ s/ /-/g;
+
+    $slug =~ s/[^a-z0-9\-]//g;
+
+    return$ slug;
 }
 
 =pod
