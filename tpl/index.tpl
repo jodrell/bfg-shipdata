@@ -92,5 +92,7 @@
     </article>
   {% endfor %}
 </main>
+
+<script src="//analytics.tau.uk.com"></script>
 </body>
 </html>

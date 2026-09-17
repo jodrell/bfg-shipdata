@@ -76,5 +76,7 @@
     </section>
   {% endif %}
 </main>
+
+<script src="//analytics.tau.uk.com"></script>
 </body>
 </html>
