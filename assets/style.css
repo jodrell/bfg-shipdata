@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'MachineItcDEE';
-    src: url('MachineItcDEE.woff') format('woff'),
-         url('MachineItcDEE.ttf') format('truetype');
+    src: url('MachineItcDEE.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -79,9 +78,31 @@
 
 @media (print) {
   html {
+    background-color: none;
     background-image: url(bg-print.jpg);
     background-size: cover;
   }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: #eee;
+    --background-color: #111;
+    --link-color: #aaa;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-color: #111;
+    --background-color: #fff;
+    --link-color: #444;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--foreground-color);
 }
 
 html,body,*,p,ol,ul,li,table,tr,td,th {
@@ -127,7 +148,7 @@ h1,h2,h3 {
 h1,h2,h3,th {
   text-transform: uppercase;
   font-weight: bold;
-  font-family: MachineItcDEE, "Arial Black" "Arial", "Helvetica", sans;
+  font-family: MachineItcDEE, "Arial Black", "Arial", "Helvetica", sans;
 }
 
 #ship-image img {
@@ -138,25 +159,25 @@ h1,h2,h3,th {
 
 th,#ship-name {
   font-weight: bold;
-  color: Field;
-  background-color: FieldText;
+  color: var(--background-color);
+  background-color: var(--foreground-color);
   white-space:nowrap;
 }
 
 th,td {
   text-align: center;
-  border: 1px solid FieldText;
+  border: 1px solid var(--foreground-color);
   padding:0.125em;
 }
 
 table {
   width: 100%;
-  border: 1px solid FieldText;
+  border: 1px solid var(--foreground-color);
   border-collapse: collapse;
 }
 
 #special,#options {
-  border: 1px solid FieldText;
+  border: 1px solid var(--foreground-color);
   border-top: none;
   padding: 0.5em;
   display: flex;
@@ -182,4 +203,8 @@ nav ul li {
   display:inline-block;
   list-style-type: none;
   padding: 0 0.5em 0 0;
+}
+
+a,a:link,a:visited {
+  color: var(--link-color);
 }

@@ -20,6 +20,8 @@
       <a href="https://bfgtools.kuldare.com/">Gothic Fleet Registry</a>.</p>
   </aside>
 
+  <hr>
+
   <nav><ul>
     <li>Jump to:</li>
     {% for fleet in fleets %}
@@ -28,6 +30,8 @@
       </li>
     {% endfor %}
   </ul></nav>
+
+  <hr>
 
   {% for fleet in fleets %}
     <article>
@@ -91,6 +95,7 @@
       {% endif %}
 
     </article>
+    <hr>
   {% endfor %}
 </main>
 
