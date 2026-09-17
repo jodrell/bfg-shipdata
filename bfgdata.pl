@@ -14,6 +14,7 @@ use HTML5::DOM;
 use Image::Size;
 use JSON::XS;
 use Lingua::EN::Titlecase;
+use List::Util qw(max);
 use Pod::Usage;
 use Template::Liquid;
 use common::sense;
@@ -57,6 +58,57 @@ sub munge_data {
     foreach my $ship (values(%{$data->{ships}})) {
         $ship->{fl} = munge_fleet_name($ship->{fl});
     }
+
+    add_missing_ships();
+}
+
+sub add_missing_ships {
+
+    my $i = max(map { int($_) } keys(%{$data->{ships}}));
+
+    my %map = map { $_->{nm} => 1 } values(%{$data->{ships}});
+
+    $data->{ships}->{++$i} = {
+        fl => q{LOW ORBIT DEFENCES},
+        nm => q{MISSILE SILO},
+        bp => 5,
+
+        ty => q{Ground},
+        hp => 1,
+
+        sp => 0,
+        tn => 0,
+        sh => 0,
+        ar => q{6+},
+
+        tl => q{TURRETS},
+        tu => 0,
+
+        aw => [ [q{Torpedoes}, q{30 cm}, 6, q{Front}] ],
+
+        pg => 0,
+    } unless (exists($map{q{MISSILE SILO}}));
+
+    $data->{ships}->{++$i} = {
+        fl => q{LOW ORBIT DEFENCES},
+        nm => q{DEFENCE LASER SILO},
+        bp => 15,
+
+        ty => q{Ground},
+        hp => 1,
+
+        sp => 0,
+        tn => 0,
+        sh => 0,
+        ar => q{6+},
+
+        tl => q{TURRETS},
+        tu => 0,
+
+        aw => [ [q{Lance battery}, q{60 cm}, 3, q{Front}] ],
+
+        pg => 0,
+    } unless (exists($map{q{DEFENCE LASER SILO}}));
 }
 
 #
@@ -97,7 +149,7 @@ sub generate_image {
     my @images = sort(bsd_glob(File::Spec->catfile(dirname(__FILE__), q{src}, sprintf(q{image-%03u-*.png}, $ship->{pg}))));
 
     if (scalar(@images) < 3) {
-        printf(STDERR qq{WARNING: found %u images for '%s' for %s (%s), need 3\n}, scalar(@images), $tc->title($ship->{nm}), $tc->title($ship->{fl}));
+        printf(STDERR qq{WARNING: found %u images on p%s for '%s' for %s (%s), need 3\n}, scalar(@images), $ship->{pg}, $tc->title($ship->{nm}), $tc->title($ship->{fl}));
         return;
     }
 
