@@ -27,8 +27,8 @@ pod2usage(1) unless(GetOptions(
 pod2usage(0) if ($help);
 
 my $tc      = Lingua::EN::Titlecase->new;
-my $tpl     = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), q{template.tpl})));
-my $i_tpl   = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), q{index.tpl})));
+my $tpl     = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), qw(tpl template.tpl))));
+my $i_tpl   = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), qw(tpl index.tpl))));
 
 $dir = abs_path($dir || File::Spec->catdir(dirname(__FILE__), q{_site}));
 
