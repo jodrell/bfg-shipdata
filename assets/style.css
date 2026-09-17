@@ -140,6 +140,7 @@ th,#ship-name {
   font-weight: bold;
   color: Field;
   background-color: FieldText;
+  white-space:nowrap;
 }
 
 th,td {
