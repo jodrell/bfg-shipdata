@@ -44,24 +44,26 @@
     </tr></tbody>
   </table>
 
-  <table id="ship-armament">
-    <thead><tr>
-      <th>Armament</th>
-      <th>Range/Speed</th>
-      <th>Firepower/Str</th>
-      <th>Fire Arc</th>
-    </tr></thead>
-    <tbody>
-    {% for weapon in ship.aw %}
-      <tr>
-        <td>{{ weapon.0 }}</td>
-        <td>{{ weapon.1 }}</td>
-        <td>{{ weapon.2 }}</td>
-        <td>{{ weapon.3 }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+  {% if has_armament %}
+    <table id="ship-armament">
+      <thead><tr>
+        <th>Armament</th>
+        <th>Range/Speed</th>
+        <th>Firepower/Str</th>
+        <th>Fire Arc</th>
+      </tr></thead>
+      <tbody>
+      {% for weapon in ship.aw %}
+        <tr>
+          <td>{{ weapon.0 }}</td>
+          <td>{{ weapon.1 }}</td>
+          <td>{{ weapon.2 }}</td>
+          <td>{{ weapon.3 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
 
   {% if has_sr %}
     <section id="special">

@@ -109,6 +109,30 @@ sub add_missing_ships {
 
         pg => 0,
     } unless (exists($map{q{DEFENCE LASER SILO}}));
+
+
+    $data->{ships}->{++$i} = {
+        fl => q{HIGH ORBIT DEFENCES},
+        nm => q{FIRE SHIP},
+        bp => 10,
+
+        ty => q{Escort},
+        hp => 1,
+
+        sp => q{15 cm},
+        tn => q{45°},
+        sh => 1,
+        ar => q{5+},
+
+        tl => q{TURRETS},
+        tu => 1,
+
+        aw => [],
+        sr => q{• The controlling player can detonate a fire ship at any point in its movement phase, inflicting D3 Fire critical hits on every ship within 3D6 cm. As with any escort suffering a critical hit, escorts within the fire ship's blast will be automatically destroyed, as are any Ordnance markers. Remove the detonated fire ship and put a Blast marker in its place.},
+
+        pg => 0,
+    } unless (exists($map{q{FIRE SHIP}}));
+
 }
 
 #
@@ -193,11 +217,12 @@ sub generate_page {
     write_file(
         filename($dir, $ship, q{html}),
         $tpl->render(
-            ship        => $ship,
-            has_image   => (-e filename($dir, $ship, q{png})),
-            image       => basename(filename($dir, $ship, q{png})),
-            has_sr      => length($ship->{sr}) > 0,
-            has_op      => length($ship->{op}) > 0,
+            ship            => $ship,
+            has_image       => (-e filename($dir, $ship, q{png})),
+            has_armament    => scalar(@{$ship->{aw}} > 0),
+            image           => basename(filename($dir, $ship, q{png})),
+            has_sr          => length($ship->{sr}) > 0,
+            has_op          => length($ship->{op}) > 0,
         )
     );
 }
