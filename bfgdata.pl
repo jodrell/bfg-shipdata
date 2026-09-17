@@ -56,6 +56,7 @@ exit;
 #
 sub munge_data {
     foreach my $ship (values(%{$data->{ships}})) {
+        $ship->{ty} = (q{Grand Cruiser} eq $ship->{ty} ? q{Cruiser} : $ship->{ty});
         $ship->{fl} = munge_fleet_name($ship->{fl});
     }
 
@@ -109,7 +110,6 @@ sub add_missing_ships {
 
         pg => 0,
     } unless (exists($map{q{DEFENCE LASER SILO}}));
-
 
     $data->{ships}->{++$i} = {
         fl => q{HIGH ORBIT DEFENCES},
