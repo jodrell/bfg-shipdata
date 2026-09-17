@@ -6,6 +6,7 @@
   <title>Battlefleet Gothic Ship Profiles</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="shortcut icon" href="assets/favicon.png">
 </head>
 <body>
 <main>

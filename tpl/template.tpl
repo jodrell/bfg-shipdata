@@ -6,6 +6,7 @@
   <title>{{ ship.nm }} ({{ ship.fl }})</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../assets/style.css">
+  <link rel="shortcut icon" href="../assets/favicon.png">
 </head>
 <body>
 <main>
@@ -19,7 +20,7 @@
       {% if has_image %}
         <img src="{{ image }}">
       {% else %}
-        <div style="text-align:center"><em>No image available</em></div>
+        <div style="text-align:center"><em>Redacted by The Inquisition!</em></div>
       {% endif %}
       <figcaption></figcaption>
     </figure>
