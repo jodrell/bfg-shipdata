@@ -50,6 +50,17 @@
         </section>
       {% endif %}
 
+      {% if fleet.counts.Grand_Cruiser > 0 %}
+        <section>
+          <h3>Grand Cruisers</h3>
+          <ul>
+            {% for ship in fleet.ships.Grand_Cruiser %}
+              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+
       {% if fleet.counts.Cruiser > 0 %}
         <section>
           <h3>Cruisers</h3>

@@ -55,12 +55,13 @@ exit;
 # apply some cleanups to the data from the Gothic Fleet Registry. 
 #
 sub munge_data {
+    add_missing_ships();
+
     foreach my $ship (values(%{$data->{ships}})) {
-        $ship->{ty} = (q{Grand Cruiser} eq $ship->{ty} ? q{Cruiser} : $ship->{ty});
+        $ship->{_ty} = $ship->{ty};
+        $ship->{_ty} =~ s/ /_/g;
         $ship->{fl} = munge_fleet_name($ship->{fl});
     }
-
-    add_missing_ships();
 }
 
 sub add_missing_ships {
@@ -282,16 +283,17 @@ sub generate_index {
                 name    => $tc->title($ship->{fl}),
                 slug    => get_slug($ship->{fl}),
                 ships   => {
-                    Defence     => [],
-                    Escort      => [],
-                    Cruiser     => [],
-                    Battleship  => [],
-                    Ground      => [],
+                    Defence         => [],
+                    Escort          => [],
+                    Cruiser         => [],
+                    Battleship      => [],
+                    Ground          => [],
+                    Grand_Cruiser   => [],
                 },
             }
         }
 
-        push(@{$fleets->{$ship->{fl}}->{ships}->{$ship->{ty}}}, {
+        push(@{$fleets->{$ship->{fl}}->{ships}->{$ship->{_ty}}}, {
             name    => $tc->title($ship->{nm}),
             href    => filename(q{.}, $ship, q{html}),
         });
