@@ -3,11 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
-  <title>Index</title>
-  <style>{{ style }}</style>
+  <title>Battlefleet Gothic Ship Profiles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 <main>
+  <header>
+    <h1>Battlefleet Gothic Ship Profiles</h1>
+  </header>
+  <aside>
+    <p>This site contains mobile-friendly HTML profile pages for all the ships in
+      the <em>Battlefleet Gothic: Remastered</em> Fleets Book. These pages are
+      built using images taken from the PDF and statistical data taken from the
+      <a href="https://bfgtools.kuldare.com/">Gothic Fleet Registry</a>.</p>
+  </aside>
+
   {% for fleet in fleets %}
     <article>
 
