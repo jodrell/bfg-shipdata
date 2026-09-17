@@ -154,7 +154,8 @@ h1,h2,h3,th {
 #ship-image img {
   display:block;
   margin: auto;
-  max-width:67%;
+  min-width:50%;
+  max-width:75%;
 }
 
 th,#ship-name {
