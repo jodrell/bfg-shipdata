@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  archive:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,8 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           RUN_STARTED_AT: ${{ github.run_started_at }}
         run: |
-          TIMESTAMP=$(date -u -d "$RUN_STARTED_AT" '+%Y%m%d%H%M%S')
-          TAG="daily-${TIMESTAMP}-${RUN_ID}"
+          TIMESTAMP=$(date -u -d "$RUN_STARTED_AT" '+%Y.%m.%d.%H%M')
+          TAG="v${TIMESTAMP}.${RUN_ID}"
 
           git tag "$TAG" "$GITHUB_SHA"
           git push origin "$TAG"
