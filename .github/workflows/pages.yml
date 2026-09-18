@@ -25,12 +25,12 @@ jobs:
       - name: build
         run: |
           apt -qqq update
-          apt -qqq install nodejs zip
+          apt -qqq install nodejs zip gh
           cpanm -qn Data::Mirror LWP::Protocol::https HTML5::DOM Image::Size Lingua::EN::Titlecase Template::Liquid File::Copy::Recursive
 
           ./bfgdata.pl
 
-          zip -r archive.zip _site/*
+          zip -r archive.zip _site
           mv archive.zip _site
 
       - uses: actions/configure-pages@v6
@@ -38,4 +38,3 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
 
       - uses: actions/deploy-pages@v5
-
