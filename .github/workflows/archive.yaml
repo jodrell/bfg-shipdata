@@ -17,13 +17,22 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: build
+        run: |
+          apt -qqq update
+          apt -qqq install nodejs
+          cpanm -qn Data::Mirror LWP::Protocol::https HTML5::DOM Image::Size Lingua::EN::Titlecase Template::Liquid File::Copy::Recursive
+
+          ./bfgdata.pl
+
+      - run: zip -r archive.zip _site
+
       - name: Create release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUN_ID: ${{ github.run_id }}
         run: |
-          TIMESTAMP=$(date -u '+%Y%m%d.%H%M')
-          TAG="v${TIMESTAMP}.${RUN_ID}"
+          TAG="v$(date -u '+%Y%m%d').${RUN_ID}"
 
           git tag "$TAG" "$GITHUB_SHA"
           git push origin "$TAG"
@@ -31,3 +40,11 @@ jobs:
           gh release create "$TAG" \
             --title "$TAG" \
             --generate-notes
+
+          echo "RELEASE_TAG=$tag" >> "$GITHUB_ENV"
+
+      - name: Upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          files: archive.zip

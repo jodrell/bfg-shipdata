@@ -22,7 +22,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - run: |
+      - name: build
+        run: |
           apt -qqq update
           apt -qqq install nodejs
           cpanm -qn Data::Mirror LWP::Protocol::https HTML5::DOM Image::Size Lingua::EN::Titlecase Template::Liquid File::Copy::Recursive
