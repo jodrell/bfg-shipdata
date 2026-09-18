@@ -103,6 +103,7 @@
 body {
   background-color: var(--background-color);
   color: var(--foreground-color);
+  font-size: 18px;
 }
 
 html,body,*,p,ol,ul,li,table,tr,td,th {
