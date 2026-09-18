@@ -1,8 +1,11 @@
 name: Archive
 
 on:
-#  schedule:
-#    - cron: '17 3 * * *'
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,8 +22,8 @@ jobs:
 
       - name: build
         run: |
-          apt -qqq update
-          apt -qqq install nodejs
+          sudo apt -qqq update
+          sudo apt -qqq install nodejs
           cpanm -qn Data::Mirror LWP::Protocol::https HTML5::DOM Image::Size Lingua::EN::Titlecase Template::Liquid File::Copy::Recursive
 
           ./bfgdata.pl
