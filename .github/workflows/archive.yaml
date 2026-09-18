@@ -38,6 +38,8 @@ jobs:
         run: |
           TAG="v$(date -u '+%Y%m%d').${RUN_ID}"
 
+          git config --global --add safe.directory \*
+
           git tag "$TAG" "$GITHUB_SHA"
           git push origin "$TAG"
 
