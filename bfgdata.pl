@@ -148,6 +148,11 @@ sub generate_pages {
     }
 
     generate_index();
+
+    write_file(
+        File::Spec->catfile($dir, q{ships.json}),
+        JSON::XS->new->utf8->pretty->encode($data),
+    )
 }
 
 #
