@@ -58,6 +58,7 @@ sub munge_data {
     add_missing_ships();
 
     foreach my $ship (values(%{$data->{ships}})) {
+        $ship->{bp} = int($ship->{bp});
         $ship->{_ty} = $ship->{ty};
         $ship->{_ty} =~ s/ /_/g;
         $ship->{fl} = munge_fleet_name($ship->{fl});
@@ -301,6 +302,7 @@ sub generate_index {
         push(@{$fleets->{$ship->{fl}}->{ships}->{$ship->{_ty}}}, {
             name    => $tc->title($ship->{nm}),
             href    => filename(q{.}, $ship, q{html}),
+            bp      => $ship->{bp},
         });
     }
 
