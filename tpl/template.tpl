@@ -12,7 +12,9 @@
 <main>
   <header>
     <h1 id="ship-name">{{ ship.nm }}</h1>
-    <h2 id="ship-points">{{ ship.bp}} pts</h2>
+    {% if ship.bp > 0 %}
+      <h2 id="ship-points">{{ ship.bp}} pts</h2>
+    {% endif %}
     <h3 id="fleet-name">{{ ship.fl }}</h3>
   </header>
 
