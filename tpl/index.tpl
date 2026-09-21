@@ -22,18 +22,20 @@
 
   <hr>
 
-  <nav><ul>
-    <li>Jump to:</li>
-    {% for fleet in fleets %}
-      <li>
-        <a href="#{{ fleet.slug }}">{{ fleet.name }}</a>
-      </li>
-    {% endfor %}
-  </ul></nav>
-
-  <hr>
+  <nav>
+    <ul>
+      <li>Jump to:</li>
+      {% for fleet in fleets %}
+        <li>
+          <a href="#{{ fleet.slug }}">{{ fleet.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
 
   {% for fleet in fleets %}
+    <hr>
+
     <article>
 
       <a name="{{ fleet.slug }}"></a>
@@ -42,73 +44,128 @@
       {% if fleet.counts.Battleship > 0 %}
         <section>
           <h3>Battleships</h3>
-          <ul>
+          <table><tbody>
             {% for ship in fleet.ships.Battleship %}
-              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+              <tr>
+                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-points">
+                  {% if ship.bp > 0 %}
+                    {{ ship.bp }} pts
+                  {% else %}
+                    -
+                  {% endif %}
+                </td>
+              </tr>
             {% endfor %}
-          </ul>
+          </tbody></table>
         </section>
       {% endif %}
 
       {% if fleet.counts.Grand_Cruiser > 0 %}
         <section>
           <h3>Grand Cruisers</h3>
-          <ul>
+          <table><tbody>
             {% for ship in fleet.ships.Grand_Cruiser %}
-              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+              <tr>
+                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-points">
+                  {% if ship.bp > 0 %}
+                    {{ ship.bp }} pts
+                  {% else %}
+                    -
+                  {% endif %}
+                </td>
+              </tr>
             {% endfor %}
-          </ul>
+          </tbody></table>
         </section>
       {% endif %}
 
       {% if fleet.counts.Cruiser > 0 %}
         <section>
           <h3>Cruisers</h3>
-          <ul>
+          <table><tbody>
             {% for ship in fleet.ships.Cruiser %}
-              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+              <tr>
+                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-points">
+                  {% if ship.bp > 0 %}
+                    {{ ship.bp }} pts
+                  {% else %}
+                    -
+                  {% endif %}
+                </td>
+              </tr>
             {% endfor %}
-          </ul>
+          </tbody></table>
         </section>
       {% endif %}
 
       {% if fleet.counts.Escort > 0 %}
         <section>
           <h3>Escorts</h3>
-          <ul>
+          <table><tbody>
             {% for ship in fleet.ships.Escort %}
-              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+              <tr>
+                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-points">
+                  {% if ship.bp > 0 %}
+                    {{ ship.bp }} pts
+                  {% else %}
+                    -
+                  {% endif %}
+                </td>
+              </tr>
             {% endfor %}
-          </ul>
+          </tbody></table>
         </section>
       {% endif %}
 
       {% if fleet.counts.Defence > 0 %}
         <section>
           <h3>Defences</h3>
-          <ul>
+          <table><tbody>
             {% for ship in fleet.ships.Defence %}
-              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+              <tr>
+                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-points">
+                  {% if ship.bp > 0 %}
+                    {{ ship.bp }} pts
+                  {% else %}
+                    -
+                  {% endif %}
+                </td>
+              </tr>
             {% endfor %}
-          </ul>
+          </tbody></table>
         </section>
       {% endif %}
 
       {% if fleet.counts.Ground > 0 %}
         <section>
           <h3>Ground Assets</h3>
-          <ul>
+          <table><tbody>
             {% for ship in fleet.ships.Ground %}
-              <li><a href="{{ ship.href }}">{{ ship.name }}</a></li>
+              <tr>
+                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-points">
+                  {% if ship.bp > 0 %}
+                    {{ ship.bp }} pts
+                  {% else %}
+                    -
+                  {% endif %}
+                </td>
+              </tr>
             {% endfor %}
-          </ul>
+          </tbody></table>
         </section>
       {% endif %}
 
     </article>
-    <hr>
   {% endfor %}
 </main>
+
+<hr>
 
 <footer>
   <div style="text-align:center;font-style:italic;white-space:nowrap">
