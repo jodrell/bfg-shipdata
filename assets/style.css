@@ -112,7 +112,7 @@ html,body,*,p,ol,ul,li,table,tr,td,th {
 
 main {
   max-width: 45em;
-  margin: auto;
+  margin: auto auto 1em auto;
 }
 
 header {
@@ -209,4 +209,24 @@ nav ul li {
 
 a,a:link,a:visited {
   color: var(--link-color);
+}
+
+.index-ship-name {
+  text-align:left;
+  white-space:nowrap;
+  width:calc(100%-4em);
+}
+
+.index-ship-points {
+  width: 4em;
+  white-space:nowrap;
+  text-align:right;
+}
+
+footer {
+  height:2em;
+  padding:0.5em;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--background-color);
 }
