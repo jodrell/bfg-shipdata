@@ -195,7 +195,7 @@ sub generate_image {
         q{-resize},
         sprintf(q{%ux%u}, imgsize($images[1])),
         q{)},
-        qw(-compose CopyOpacity -composite),
+        qw(-compose CopyOpacity -composite -shave 1x1),
         $file,
     );
 
