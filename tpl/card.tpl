@@ -130,7 +130,8 @@
       </div>
     {% endif %}
 
-<div style="margin-top:1em;text-align:center;font-style:italic;color:silver">Brought to you by <a style="color:silver;text-decoration:none" href="https://jodrell.org">𝔍𝔬𝔡𝔯𝔢𝔩𝔩.𝔬𝔯𝔤</a></div>
 </div>
+<div style="margin-top:1em;text-align:center;font-style:italic;color:silver">Brought to you by <a style="color:silver;text-decoration:none" href="https://jodrell.org">𝔍𝔬𝔡𝔯𝔢𝔩𝔩.𝔬𝔯𝔤</a></div>
+<script src="//analytics.tau.uk.com"></script>
 </body>
 </html>
