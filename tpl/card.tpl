@@ -5,6 +5,7 @@
   <meta name="color-scheme" content="light">
   <title>{{ ship.nm }} ({{ ship.fl }})</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
   <style>
 
     @page {
@@ -75,7 +76,7 @@
 
           <table style="margin:auto"><tbody><tr>
             {% for i in range %}
-              <td style="border:1px solid black;width:8mm;height:8mm;padding:0;vertical-align:middle;text-align:center;color:#eee">
+              <td style="border:1px solid black;width:8mm;height:8mm;padding:0;vertical-align:middle;text-align:center;color:silver">
                 {{ i }}
               </td>
               {% if i == crippled_at %}
@@ -128,6 +129,8 @@
         <strong>Options</strong>: {{ ship.op }}
       </div>
     {% endif %}
+
+<div style="margin-top:1em;text-align:center;font-style:italic;color:silver">Brought to you by <a style="color:silver;text-decoration:none" href="https://jodrell.org">𝔍𝔬𝔡𝔯𝔢𝔩𝔩.𝔬𝔯𝔤</a></div>
 </div>
 </body>
 </html>
