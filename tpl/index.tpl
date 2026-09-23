@@ -55,6 +55,7 @@
                     -
                   {% endif %}
                 </td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -75,6 +76,7 @@
                     -
                   {% endif %}
                 </td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -95,6 +97,7 @@
                     -
                   {% endif %}
                 </td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -115,6 +118,7 @@
                     -
                   {% endif %}
                 </td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -135,6 +139,7 @@
                     -
                   {% endif %}
                 </td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -155,6 +160,7 @@
                     -
                   {% endif %}
                 </td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
               </tr>
             {% endfor %}
           </tbody></table>

@@ -7,6 +7,14 @@
 }
 
 @font-face {
+    font-family: 'Roboto Sans';
+    src: url('Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
   font-family: 'Minion Pro Regular';
   font-style: normal;
   font-weight: normal;
@@ -82,21 +90,25 @@
     background-image: url(bg-print.jpg);
     background-size: cover;
   }
+
+  footer {
+    display: none !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-color: #eee;
-    --background-color: #111;
-    --link-color: #aaa;
+    --foreground-color: rgba(226, 228, 233);
+    --background-color: rgb(30, 33, 41);
+    --link-color: rgb(94, 139, 222);
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --foreground-color: #111;
+    --foreground-color: rgba(0, 0, 0);
     --background-color: #fff;
-    --link-color: #444;
+    --link-color: rgb(64, 81, 181);
   }
 }
 
@@ -160,6 +172,7 @@ h1,h2,h3,th {
 }
 
 th,#ship-name {
+  padding: 0em 0 0.2em 0.2em;
   font-weight: bold;
   color: var(--background-color);
   background-color: var(--foreground-color);
@@ -221,6 +234,10 @@ a,a:link,a:visited {
   width: 4em;
   white-space:nowrap;
   text-align:right;
+}
+
+.index-ship-link {
+  width:1em;
 }
 
 footer {

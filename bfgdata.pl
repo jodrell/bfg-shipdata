@@ -16,6 +16,7 @@ use JSON::XS;
 use Lingua::EN::Titlecase;
 use List::Util qw(max);
 use Pod::Usage;
+use POSIX;
 use Template::Liquid;
 use common::sense;
 
@@ -30,6 +31,7 @@ pod2usage(0) if ($help);
 my $tc      = Lingua::EN::Titlecase->new;
 my $tpl     = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), qw(tpl template.tpl))));
 my $i_tpl   = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), qw(tpl index.tpl))));
+my $c_tpl   = Template::Liquid->parse(read_file(File::Spec->catfile(dirname(abs_path(__FILE__)), qw(tpl card.tpl))));
 
 $dir = abs_path($dir || File::Spec->catdir(dirname(__FILE__), q{_site}));
 
@@ -221,17 +223,20 @@ sub generate_page {
         $ship->{$_} = bullets2li($ship->{$_});
     }
 
-    write_file(
-        filename($dir, $ship, q{html}),
-        $tpl->render(
-            ship            => $ship,
-            has_image       => (-e filename($dir, $ship, q{png})),
-            has_armament    => scalar(@{$ship->{aw}} > 0),
-            image           => basename(filename($dir, $ship, q{png})),
-            has_sr          => length($ship->{sr}) > 0,
-            has_op          => length($ship->{op}) > 0,
-        )
+    my %args = (
+        ship            => $ship,
+        has_image       => (-e filename($dir, $ship, q{png})),
+        has_armament    => scalar(@{$ship->{aw}} > 0),
+        image           => basename(filename($dir, $ship, q{png})),
+        has_sr          => length($ship->{sr}) > 0,
+        has_op          => length($ship->{op}) > 0,
+        is_escort       => $ship->{hp} < 1,
+        crippled_at     => floor($ship->{hp} / 2),
+        is_unique       => $ship->{nm} =~ /(seditio opprimere|omnissiah's victory|scion of prospero|wage of sin|slaverer|terminus est|planet killer|flame of asuryan|gorbag's revenge|zukov's claw)/i,
     );
+
+    write_file(filename($dir, $ship, q{html}), $tpl->render(%args));
+    write_file(filename($dir, $ship, q{card.html}), $c_tpl->render(%args));
 }
 
 #
@@ -300,9 +305,10 @@ sub generate_index {
         }
 
         push(@{$fleets->{$ship->{fl}}->{ships}->{$ship->{_ty}}}, {
-            name    => $tc->title($ship->{nm}),
-            href    => filename(q{.}, $ship, q{html}),
-            bp      => $ship->{bp},
+            name        => $tc->title($ship->{nm}),
+            href        => filename(q{.}, $ship, q{html}),
+            card_href   => filename(q{.}, $ship, q{card.html}),
+            bp          => $ship->{bp},
         });
     }
 
