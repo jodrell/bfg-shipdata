@@ -226,7 +226,7 @@ a,a:link,a:visited {
   color: var(--link-color);
 }
 
-.index-table, .index-table td {
+.index-table td {
 	border:none;
 	text-align:bottom;
 	padding: 0.25em 0.25em 0.125em 0.25em;
@@ -234,6 +234,7 @@ a,a:link,a:visited {
 }
 
 .index-table {
+	border:none;
 	margin-bottom:1em;
 }
 
