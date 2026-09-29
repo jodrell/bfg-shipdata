@@ -101,6 +101,7 @@
     --foreground-color: rgba(226, 228, 233);
     --background-color: rgb(30, 33, 41);
     --link-color: rgb(94, 139, 222);
+    --icon-link-invert-ratio: 1;
   }
 }
 
@@ -109,6 +110,7 @@
     --foreground-color: rgba(0, 0, 0);
     --background-color: #fff;
     --link-color: rgb(64, 81, 181);
+    --icon-link-invert-ratio: 0;
   }
 }
 
@@ -180,15 +182,19 @@ th,#ship-name {
 }
 
 th,td {
-  text-align: center;
-  border: 1px solid var(--foreground-color);
-  padding:0.125em;
+  text-align: bottom;
+  border-bottom: 1px dashed var(--foreground-color);
+  padding:0.25em;
+  margin: 0 0 1em 0;
 }
 
 table {
   width: 100%;
-  border: 1px solid var(--foreground-color);
-  border-collapse: collapse;
+  border: none;
+}
+
+.index-table {
+  margin: 0 0 1em 0 !important;
 }
 
 #special,#options {
@@ -238,6 +244,10 @@ a,a:link,a:visited {
 
 .index-ship-link {
   width:1em;
+}
+
+.link-icon {
+  filter: invert(var(--icon-link-invert-ratio));
 }
 
 footer {

@@ -20,8 +20,6 @@
       <a href="https://bfgtools.kuldare.com/">Gothic Fleet Registry</a>.</p>
   </aside>
 
-  <hr>
-
   <nav>
     <ul>
       <li>Jump to:</li>
@@ -34,7 +32,6 @@
   </nav>
 
   {% for fleet in fleets %}
-    <hr>
 
     <article>
 
@@ -44,10 +41,10 @@
       {% if fleet.counts.Battleship > 0 %}
         <section>
           <h3>Battleships</h3>
-          <table><tbody>
+          <table class="index-table"><tbody>
             {% for ship in fleet.ships.Battleship %}
               <tr>
-                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-name">{{ ship.name }}</td>
                 <td class="index-ship-points">
                   {% if ship.bp > 0 %}
                     {{ ship.bp }} pts
@@ -55,7 +52,8 @@
                     -
                   {% endif %}
                 </td>
-                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
+                <td class="index-ship-link"><a href="{{ ship.href }}"><img class="link-icon" src="assets/display-solid-full.svg"></a></td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version"><img class="link-icon" src="assets/print-solid-full.svg"></a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -65,10 +63,10 @@
       {% if fleet.counts.Grand_Cruiser > 0 %}
         <section>
           <h3>Grand Cruisers</h3>
-          <table><tbody>
+          <table class="index-table"><tbody>
             {% for ship in fleet.ships.Grand_Cruiser %}
               <tr>
-                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-name">{{ ship.name }}</td>
                 <td class="index-ship-points">
                   {% if ship.bp > 0 %}
                     {{ ship.bp }} pts
@@ -76,7 +74,8 @@
                     -
                   {% endif %}
                 </td>
-                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
+                <td class="index-ship-link"><a href="{{ ship.href }}"><img class="link-icon" src="assets/display-solid-full.svg"></a></td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version"><img class="link-icon" src="assets/print-solid-full.svg"></a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -86,10 +85,10 @@
       {% if fleet.counts.Cruiser > 0 %}
         <section>
           <h3>Cruisers</h3>
-          <table><tbody>
+          <table class="index-table"><tbody>
             {% for ship in fleet.ships.Cruiser %}
               <tr>
-                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-name">{{ ship.name }}</td>
                 <td class="index-ship-points">
                   {% if ship.bp > 0 %}
                     {{ ship.bp }} pts
@@ -97,7 +96,8 @@
                     -
                   {% endif %}
                 </td>
-                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
+                <td class="index-ship-link"><a href="{{ ship.href }}"><img class="link-icon" src="assets/display-solid-full.svg"></a></td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version"><img class="link-icon" src="assets/print-solid-full.svg"></a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -107,10 +107,10 @@
       {% if fleet.counts.Escort > 0 %}
         <section>
           <h3>Escorts</h3>
-          <table><tbody>
+          <table class="index-table"><tbody>
             {% for ship in fleet.ships.Escort %}
               <tr>
-                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-name">{{ ship.name }}</td>
                 <td class="index-ship-points">
                   {% if ship.bp > 0 %}
                     {{ ship.bp }} pts
@@ -118,7 +118,8 @@
                     -
                   {% endif %}
                 </td>
-                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
+                <td class="index-ship-link"><a href="{{ ship.href }}"><img class="link-icon" src="assets/display-solid-full.svg"></a></td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version"><img class="link-icon" src="assets/print-solid-full.svg"></a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -128,10 +129,10 @@
       {% if fleet.counts.Defence > 0 %}
         <section>
           <h3>Defences</h3>
-          <table><tbody>
+          <table class="index-table"><tbody>
             {% for ship in fleet.ships.Defence %}
               <tr>
-                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-name">{{ ship.name }}</td>
                 <td class="index-ship-points">
                   {% if ship.bp > 0 %}
                     {{ ship.bp }} pts
@@ -139,7 +140,8 @@
                     -
                   {% endif %}
                 </td>
-                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
+                <td class="index-ship-link"><a href="{{ ship.href }}"><img class="link-icon" src="assets/display-solid-full.svg"></a></td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version"><img class="link-icon" src="assets/print-solid-full.svg"></a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -149,10 +151,10 @@
       {% if fleet.counts.Ground > 0 %}
         <section>
           <h3>Ground Assets</h3>
-          <table><tbody>
+          <table class="index-table"><tbody>
             {% for ship in fleet.ships.Ground %}
               <tr>
-                <td class="index-ship-name"><a href="{{ ship.href }}">{{ ship.name }}</a></td>
+                <td class="index-ship-name">{{ ship.name }}</td>
                 <td class="index-ship-points">
                   {% if ship.bp > 0 %}
                     {{ ship.bp }} pts
@@ -160,7 +162,8 @@
                     -
                   {% endif %}
                 </td>
-                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version">&#128424;&#65039;</a></td>
+                <td class="index-ship-link"><a href="{{ ship.href }}"><img class="link-icon" src="assets/display-solid-full.svg"></a></td>
+                <td class="index-ship-link"><a href="{{ ship.card_href }}" title="Open printable version"><img class="link-icon" src="assets/print-solid-full.svg"></a></td>
               </tr>
             {% endfor %}
           </tbody></table>
@@ -170,8 +173,6 @@
     </article>
   {% endfor %}
 </main>
-
-<hr>
 
 <footer>
   <div style="text-align:center;font-style:italic;white-space:nowrap">
