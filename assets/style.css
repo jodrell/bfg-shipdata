@@ -101,7 +101,7 @@
     --foreground-color: rgba(226, 228, 233);
     --background-color: rgb(30, 33, 41);
     --link-color: rgb(94, 139, 222);
-    --icon-link-invert-ratio: 1;
+		--icon-link-invert-ratio: 1;
   }
 }
 
@@ -110,7 +110,7 @@
     --foreground-color: rgba(0, 0, 0);
     --background-color: #fff;
     --link-color: rgb(64, 81, 181);
-    --icon-link-invert-ratio: 0;
+		--icon-link-invert-ratio: 0;
   }
 }
 
@@ -182,19 +182,15 @@ th,#ship-name {
 }
 
 th,td {
-  text-align: bottom;
-  border-bottom: 1px dashed var(--foreground-color);
-  padding:0.25em;
-  margin: 0 0 1em 0;
+  text-align: center;
+  border: 1px solid var(--foreground-color);
+  padding:0.125em;
 }
 
 table {
   width: 100%;
-  border: none;
-}
-
-.index-table {
-  margin: 0 0 1em 0 !important;
+  border: 1px solid var(--foreground-color);
+  border-collapse: collapse;
 }
 
 #special,#options {
@@ -228,6 +224,17 @@ nav ul li {
 
 a,a:link,a:visited {
   color: var(--link-color);
+}
+
+.index-table, .index-table td {
+	border:none;
+	text-align:bottom;
+	padding: 0.25em 0.25em 0.125em 0.25em;
+	border-bottom: 1px dashed var(--foreground-color);
+}
+
+.index-table {
+	margin-bottom:1em;
 }
 
 .index-ship-name {
