@@ -19,6 +19,6 @@ php -S 127.0.0.1:8080 -t _site &
 
 open http://127.0.0.1:8080
 
-fswatch -or "${DIR}" -e "${DIR}/_site" | while read e ; do generate_site ; done
+fswatch -or "${DIR}" -e "${DIR}/.git" -e "${DIR}/_site" | while read e ; do generate_site ; done
 
 wait
