@@ -29,6 +29,7 @@
 
     *,html,body,div,table,th,td,ul,li {
       font-family: 'Minion Pro Regular', 'Times New Roman', Times, serif;
+			print-color-adjust: exact;
     }
 
     ul {
@@ -67,7 +68,7 @@
 
       <div style="flex: 1 1 auto;padding:0.25cm">
         {% if has_image %}
-          <img src="{{ image }}" style="display:block;max-width:100%;max-height:12em;margin:0 auto 0.25cm auto">
+          <img src="{{ image }}" style="display:block;max-width:100%;max-height:10em;margin:0 auto 0.25cm auto">
         {% endif %}
 
         {% if ship.hp > 1 %}
@@ -131,7 +132,10 @@
     {% endif %}
 
 </div>
-<div style="margin-top:1em;text-align:center;font-style:italic;color:silver">Brought to you by <a style="color:silver;text-decoration:none" href="https://jodrell.org">𝔍𝔬𝔡𝔯𝔢𝔩𝔩.𝔬𝔯𝔤</a></div>
+<div style="margin-top:1em;text-align:center;font-style:italic;color:silver">
+	Printed from https://ships.battlefleet-game.org &middot;
+	Brought to you by <a style="color:silver;text-decoration:none" href="https://jodrell.org">𝔍𝔬𝔡𝔯𝔢𝔩𝔩.𝔬𝔯𝔤</a>
+</div>
 <script src="//analytics.tau.uk.com"></script>
 </body>
 </html>

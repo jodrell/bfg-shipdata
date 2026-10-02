@@ -84,6 +84,8 @@
 
 <footer>
   <div style="text-align:center;font-style:italic;white-space:nowrap">
+    <a href="{{ card }}">Printable</a>
+    &middot;
     <a href="../">Index</a>
     &middot;
     <a href="https://github.com/jodrell/ships.battlefleet-game.org">GitHub</a>

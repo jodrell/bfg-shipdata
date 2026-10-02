@@ -228,6 +228,7 @@ sub generate_page {
         has_image       => (-e filename($dir, $ship, q{png})),
         has_armament    => scalar(@{$ship->{aw}} > 0),
         image           => basename(filename($dir, $ship, q{png})),
+        card            => basename(filename($dir, $ship, q{card.html})),
         has_sr          => length($ship->{sr}) > 0,
         has_op          => length($ship->{op}) > 0,
         is_escort       => $ship->{hp} < 1,
