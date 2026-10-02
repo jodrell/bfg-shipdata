@@ -64,6 +64,10 @@ sub munge_data {
         $ship->{_ty} = $ship->{ty};
         $ship->{_ty} =~ s/ /_/g;
         $ship->{fl} = munge_fleet_name($ship->{fl});
+
+		for (my $i = 0 ; $i < scalar(@{$ship->{aw}}) ; $i++) {
+			$ship->{aw}->[$i]->[3] =~ s/\//\/\x{200B}/g;
+		}
     }
 }
 
